@@ -3,7 +3,7 @@ import time
 import random
 import sys
 import socket
-
+#works with other servers
 if (len(sys.argv) < 4):
     print("Invalid port number, please use the following to start the server: python client.py <rsHostname> <rsListenPort> <tsListenPort>")
     exit()
