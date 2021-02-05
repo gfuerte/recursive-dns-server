@@ -3,17 +3,19 @@ import time
 import random
 import sys
 import socket
-#works with other servers
-if (len(sys.argv) < 4):
-    print("Invalid port number, please use the following to start the server: python client.py <rsHostname> <rsListenPort> <tsListenPort>")
+
+# works with other servers
+if len(sys.argv) < 4:
+    print(
+        "Invalid port number, please use the following to start the server: python client.py <rsHostname> <rsListenPort> <tsListenPort>")
     exit()
 
 rsHost = sys.argv[1]
 rsPort = int(sys.argv[2])
 tsPort = int(sys.argv[3])
-#Establish server socket
+# Establish server socket
 
-#Establish client/server connection
+# Establish client/server connection
 try:
     cs = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print("[C]: Client socket created")
@@ -29,7 +31,7 @@ server_binding = (rsHost, rsPort)
 cs.connect(server_binding)
 
 # Receive data from the server
-data_from_server=cs.recv(100)
+data_from_server = cs.recv(100)
 print("[C]: Data received from server: {}".format(data_from_server.decode('utf-8')))
 
 # close the client socket
