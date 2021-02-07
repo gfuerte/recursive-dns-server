@@ -9,12 +9,13 @@ dns = {}
 file = open("PROJI-DNSRS.txt", "r")
 for i in file:
     arr = i.split()
+    arr[0] = arr[0].lower() #As of now I lower case all entries to make things easier to find, although I'm not sure if this will affect tests
     if arr[0] == 'localhost':
         dns['localhost'] = 'NS'
     else:
         dns[arr[0]] = arr[1] + ' ' + arr[2]
 
-print(dns)
+#print(dns)
 file.close()
 
 #works with other servers
@@ -45,7 +46,36 @@ print ("[S]: Got a connection request from a client at {}".format(addr))
 msg = "Successfully connected, waiting for queries..."
 csockid.send(msg.encode('utf-8'))
 
+#Amount of queries to be run
+msg = csockid.recv(100)
+count = int(msg)
+csockid.send("success")
 
+print("[S]: Processing client request, sending info on queries...")
+#Begin to recieve queries from client and check in table
+for x in range(count):
+    msg = csockid.recv(100)
+    csockid.send("success")
+    #print(msg)
+    msgLen = int(msg)
+    msg = csockid.recv(msgLen)
+    csockid.send("success")
+    #print(msg)
+    csockid.recv(100)
+    result = ""
+
+    if msg.lower() in dns:
+        result = msg.lower() + " " + dns[msg.lower()]
+    else: #For now, otherwise reroute client to TS server (Maybe have a file of not found messages), or we can try threading
+        result = msg.lower() + " - Error:HOST NOT FOUND"
+
+    resultLength = str(len(result))
+    csockid.send(resultLength.encode('utf-8'))
+    csockid.recv(100)
+    csockid.send(result)
+
+
+print("[S]: Done!")
 # Close the server socket
 ss.close()
 exit()

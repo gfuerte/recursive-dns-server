@@ -9,6 +9,7 @@ dns = {}
 file = open("PROJI-DNSTS.txt", "r")
 for i in file:
     arr = i.split()
+    arr[0] = arr[0].lower()
     dns[arr[0]] = arr[1] + ' ' + arr[2]
 
 print(dns)
