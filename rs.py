@@ -68,7 +68,7 @@ for x in range(count):
     if msg.lower() in dns:
         result = dns[msg.lower()]
     else: #We should probably just say "not found", then have a thread lookup in the TS server so all searches are in the order of their request
-        result = msg.lower() + " - Error:HOST NOT FOUND"
+        result = msg + " - Error:HOST NOT FOUND"
 
     resultLength = str(len(result))
     csockid.send(resultLength.encode('utf-8'))
