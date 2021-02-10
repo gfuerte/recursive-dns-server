@@ -67,7 +67,7 @@ for x in range(count):
 
     if msg.lower() in dns:
         result = dns[msg.lower()]
-    else: #For now, otherwise reroute client to TS server (Maybe have a file of not found messages), or we can try threading
+    else: #We should probably just say "not found", then have a thread lookup in the TS server so all searches are in the order of their request
         result = msg.lower() + " - Error:HOST NOT FOUND"
 
     resultLength = str(len(result))
