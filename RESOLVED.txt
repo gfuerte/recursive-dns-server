@@ -3,4 +3,4 @@ mx.rutgers.com - Error:HOST NOT FOUND
 www.ibm.edu - Error:HOST NOT FOUND
 google.com - Error:HOST NOT FOUND
 www.google.com 8.6.4.2 A
-mx.rutgers.edu 192.64.4.2 A
+MX.rutgers.edu 192.64.4.2 A

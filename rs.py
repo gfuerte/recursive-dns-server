@@ -9,11 +9,12 @@ dns = {}
 file = open("PROJI-DNSRS.txt", "r")
 for i in file:
     arr = i.split()
-    arr[0] = arr[0].lower() #As of now I lower case all entries to make things easier to find, although I'm not sure if this will affect tests
+    temp = arr[0]
+    arr[0] = arr[0].lower() 
     if arr[0] == 'localhost':
         dns['localhost'] = 'NS'
     else:
-        dns[arr[0]] = arr[1] + ' ' + arr[2]
+        dns[arr[0]] = temp + ' ' + arr[1] + ' ' + arr[2]
 
 #print(dns)
 file.close()
@@ -65,7 +66,7 @@ for x in range(count):
     result = ""
 
     if msg.lower() in dns:
-        result = msg.lower() + " " + dns[msg.lower()]
+        result = dns[msg.lower()]
     else: #For now, otherwise reroute client to TS server (Maybe have a file of not found messages), or we can try threading
         result = msg.lower() + " - Error:HOST NOT FOUND"
 
