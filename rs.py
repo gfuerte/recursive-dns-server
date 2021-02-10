@@ -5,18 +5,18 @@ import sys
 import socket
 
 dns = {}
-
+tsHost = ""
 file = open("PROJI-DNSRS.txt", "r")
 for i in file:
     arr = i.split()
     temp = arr[0]
     arr[0] = arr[0].lower() 
-    if arr[0] == 'localhost':
-        dns['localhost'] = 'NS'
+    if arr[1] == '-':
+        tsHost = arr[0]
     else:
         dns[arr[0]] = temp + ' ' + arr[1] + ' ' + arr[2]
 
-#print(dns)
+#print(tsHost)
 file.close()
 
 #works with other servers
@@ -68,7 +68,7 @@ for x in range(count):
     if msg.lower() in dns:
         result = dns[msg.lower()]
     else: #We should probably just say "not found", then have a thread lookup in the TS server so all searches are in the order of their request
-        result = msg + " - Error:HOST NOT FOUND"
+        result = "NF:{}".format(tsHost)
 
     resultLength = str(len(result))
     csockid.send(resultLength.encode('utf-8'))

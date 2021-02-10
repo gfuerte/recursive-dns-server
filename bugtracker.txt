@@ -1,6 +1,1 @@
 CURRENT BUGS/issues
-
-    -Not sure if we're graded on capitalization, but as of now we just lower case everything
-        -Ideally, we just send the result as it appears in the DNS tables
-    
-    -We're either gonna have to thread for TS lookup, or we can create another txt file with things to be looked up in the TS server
