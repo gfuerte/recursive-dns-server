@@ -133,5 +133,4 @@ sendQueries(toQuery,cs,tsPort)
 print("[C]: Successfully ran queries, see results in RESOLVED.txt file.")
 
 # close the client socket
-cs.close()
 exit()

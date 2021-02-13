@@ -47,6 +47,7 @@ while True:
 
     lenHost = csockid.recv(100)
     if lenHost == "DONE!":
+        ss.close()
         csockid.close()
         print("[S]: Finished querying, goodbye...")
         exit()

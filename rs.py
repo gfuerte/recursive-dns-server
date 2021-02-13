@@ -78,5 +78,8 @@ for x in range(count):
 
 print("[S]: Done!")
 # Close the server socket
+csockid.recv(100)
+
+csockid.close()
 ss.close()
 exit()
