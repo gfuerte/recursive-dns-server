@@ -11,7 +11,7 @@ for i in file:
     arr = i.split()
     temp = arr[0]
     arr[0] = arr[0].lower() 
-    if arr[1] == '-':
+    if arr[2] == 'NS':
         tsHost = arr[0]
     else:
         dns[arr[0]] = temp + ' ' + arr[1] + ' ' + arr[2]

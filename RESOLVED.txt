@@ -1,2 +1,2 @@
-www.GOOGLE.com 192.168.50.40 NS
+www.GOOGLE.com 192.168.50.40 A
 https://burgermail.com 192.15.20 A
