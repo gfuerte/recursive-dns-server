@@ -13,3 +13,14 @@ Once RESOLVED.txt is written, all the python programs close, and are able to be 
 3. We initially had some confusion about whether case sensitivity would play a part within the hostnames along with what was the proper approach to connecting to the ts server after a hostname was not found within the rs server. We were able to compare the hostnames in each table by setting each one to the lower case form of the word, if these two matched, we would return how it appeared on the server side table, otherwise, it would return the requested hostname by the client. In order to connect to the TS server, we simply just made another socket designated for that server, and whenever we needed to connect, we use that socket. Another issue we ran into is that the RS server could not immediately start back up after being closed. This was actually a bug that was a result of some leftover data being held in the socket stream, and we fixed it by recieving (recv) the rest of the data, which allowed the socket to close properly, allowing us to instantly run the servers again.
 
 4. This project was a good refresher of how sockets are used to connect clients and servers to each other. And this project served as a good introduction to python programming and it uses it especially since compared to Java or C, we're much less experienced with programming using Python. Overall, we were able to see how the abstract idea of DNS interacts with each other and the client through our code.
+
+To Run Use Command Lines:
+python ts.py tsListenPort
+python rs.py rsListenPort
+python client.py rsHostname rsListenPort tsListenPort
+
+This zip file should include:
+client.py
+rs.py
+ts.py
+README.txt
